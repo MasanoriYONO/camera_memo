@@ -1,11 +1,18 @@
 ///// Save memo and return to top page
 function onSaveBtn() {
-    var text = $("#Memo").val();
-    if (text != '') {
+    console.log("onSaveBtn.");
+    
+    var t_memo = $("#photo_description").text();
+    var phtoto_time = $("#saved_date").text();
+    var file_path = $("#photo_path").text();
+    
+    console.log("t_memo:" + t_memo);
+    console.log("phtoto_time:" + phtoto_time);
+    console.log("file_path:" + file_path);
+    
+    if (t_memo != '' && phtoto_time != '' && file_path != '') {
         // Save to local storage
-        addMemo(text);
-        // Clear form
-        $("#Memo").val("");
+        addMemo(t_memo, phtoto_time, file_path);
         // Initialize top page
         initTopPage();
     }
