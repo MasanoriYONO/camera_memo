@@ -48,10 +48,11 @@ function initTopPage() {
         var date = moment(memo.time).format("YYYY-MM-DD HH:mm:ss")
         console.log(date);
         
-        $li = $("<li><a href='#' class='show'><h3></h3><p></p></a><a href='#' class='delete'>Delete</a></li>");
+        $li = $("<li><a href='#' class='show'><h3></h3><p></p><span style='display:none;'></span></a><a href='#' class='delete'>Delete</a></li>");
         $li.data("id", memo.id);
         $li.find("h3").text(date);
         $li.find("p").text(memo.text);
+        $li.find("span").text(memo.path);
         $("#TopListView").prepend($li);
     }
     if (list.length == 0) {
@@ -66,9 +67,11 @@ function onShowLink() {
     var $li = $(this).parent();
     var memoTitle = $li.find("h3").text();
     var memoHtml = $li.find("p").html().replace(/\n/g, "<br>");
+    var photo_file_path = $li.find("span").text();
     
-    $("#ShowPage h1").text(memoTitle);
-    $("#ShowPage p").html(memoHtml);
+    $("#ShowPage h1").text(memoHtml);
+    $("#ShowPage p").html(memoTitle);
+    $("#camera_detail").attr('src', photo_file_path);
     $.mobile.changePage("#ShowPage");
 }
 
