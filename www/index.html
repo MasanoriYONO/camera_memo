@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
+    
 </head>
 <body>
 
     <!-- TOP Page -->
     <div data-role="page" id="TopPage">
         <header data-role="header" data-position="fixed" data-theme="c">
-            <h1>Monaca Memo</h1>
-            <a href="#AddPage" data-icon="plus" class="ui-btn-right">Add</a>
+            <h1>Photo Memo</h1>
+            <a href="#AddPage" data-icon="plus" class="ui-btn-right" onclick="addpage_init();">Add</a>
         </header>
         <section data-role="content">
             <ul id="TopListView" data-role="listview" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-split-icon="delete">
@@ -29,9 +30,25 @@
             <h1>Add Memo</h1>
         </header>
         <section data-role="content">
-            <label for="Memo">Memo:</label>
-            <textarea id="Memo"></textarea>
-            <a data-role="button" data-icon="check" id="SaveBtn">Save</a>
+            <img src="" style="width:90%;margin-left:5%;margin-top:5%;" id="camera_pic">
+            
+            <div style="text-align:center;">
+            <span class="desc"  id="saved_date"></span>
+            </div>
+            
+            <div style="text-align:center;">
+            <span class="desc"  id="photo_description"></span>
+            </div>
+            
+            <div style="text-align:center;">
+            <span class="desc"  id="photo_path"></span>
+            </div>
+            
+            
+            <a data-role="button" id="PhotoBtn" onclick="onPhotoBtn();">camera</a>
+            
+            <a data-role="button" id="SaveBtn">save</a>
+            
         </section>
     </div>
 
@@ -42,7 +59,10 @@
             <h1></h1>
         </header>
         <section data-role="content">
+            <img src="" style="width:90%;margin-left:5%;margin-top:5%;" id="camera_detail">
+            <div style="text-align:center;">
             <p></p>
+            </div>
         </section>
     </div>
     
@@ -50,15 +70,20 @@
 <script src="js/memo.js"></script>
 <script src="js/app.js"></script>
 <script src="js/cssua.min.js"></script>
+<script src="js/camera.js"></script>
+
 <script>
-$(function(){
-    if(monaca.isIOS){
-        $("header").css("margin-top","25px");
-        // $(".ui-btn-right").css("margin-top","20px");
-        $("section").css("margin-top","25px");
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
         
+    function onDeviceReady(){
+        console.log("PhoneGap is ready.");
+        
+        if(monaca.isIOS){
+            $("header").css("margin-top","25px");
+            $("section").css("margin-top","25px");
+        }
     }
-});
 </script>
 </body>
 </html>
