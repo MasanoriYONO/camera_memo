@@ -11,7 +11,24 @@ function onSaveBtn() {
     }
     $.mobile.changePage("#TopPage", { reverse: true });
 }
-
+function onPhotoBtn() {
+    camera();
+}
+function addpage_init(){
+    console.log("addpage_init.");
+    
+    $("#saved_date").text("");
+    $("#photo_description").text("");
+    $("#photo_path").text("");
+    
+    $("#camera_pic").attr('src', '');
+    $("#camera_pic").css('display', 'none');
+    $("#view_date").css('display', 'none');
+    
+    // 画像ファイル保存のディレクトリ作成と取得。
+    // saved_photo_filename = "dummy.jpg";
+    // camera_readImageFile('');
+}
 ///// Initialize top page
 function initTopPage() {
     $("#TopListView").empty();
